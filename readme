@@ -1,0 +1,27 @@
+Name: ParkNaHyeon
+--------------------------------------------------------------------------------
+Help from others: Did it on my own
+--------------------------------------------------------------------------------
+Time spend : 6 days (4 days on task1,task2 / 2 days on hash table expansion)
+--------------------------------------------------------------------------------
+Using array vs Hash Table: Using hash table rather than using array is way more efficient when trying to fing the specific UserInfo. Since array arranges UserInfos in order that does not have any standard, we need to search from the start to the bottom in order to find one UserInfo. However, by hash table, if we know the result of hash_function that we are finding, it is way more faster and easier to find the UserInfo and get the information needed.
+--------------------------------------------------------------------------------
+About hash table expansion:
+I implemented hash table expansion. However, here are the problems that I failed to find the cause.
+-> ./testclient -p 10000 -> passes all the test
+-> ./testclient -p 20000 -> fails unregistering(test 5)
+-> ./testclient -p 30000 -> passes all the test
+
+So, I tried to find the cause but failed to find out why 30000 works while 20000doesn't.
+
+--However, if I do not do hash expansion,(customer_manager2.c), it works like
+-> ./testclient -p 10000 -> passes all the test
+-> ./testclient -p 20000 -> passes all the test
+-> ./testclient -p 30000 -> passes all the test
+
+So, I concluded that hash expansion works but does not work 'perfectly' although my code without implementation works in these all cases.
+
+As a conclusion, I inevitably decided to split two .c files into two which is 'customer_manager2.c' and 'customer_manager2_hashexpansion.c'.
+--------------------------------------------------------------------------------
+Functions that hash table expansion are implemented in:
+RegisterCustomer, Hash_EXPANSION
